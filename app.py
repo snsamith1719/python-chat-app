@@ -18,7 +18,7 @@ def index():
 @socketio.on("connect")
 def handle_connect():
     username = f"User_{random.randint(1000,9999)}"
-    gender = random.choice(["girl","boy"])
+    gender = "boy"
     avatar_url = f"https://avatar.iran.liara.run/public/{gender}?username={username}"
     users[request.sid] = {"username":username, "avatar":avatar_url}
     emit("user_joined", {"username":username, "avatar":avatar_url},broadcast=True)
